@@ -1,15 +1,27 @@
-# Crossroads
+# Crypto Briefing User Authentication
 
-The future is multichain, but it's easy to get lost in the cross-chain woods. This leads to poor UX, especially for less sophisticated users. Meet Crossroads—the one-stop-shop for navigating EVM-compatible chains.
-- **What the project does?**
-  - Crossroads is a gateway to EVM-compatible chains and sequencers. It lists all the available options in a comprehensive UI, and abstracts migration complexity.
-- **User workflow**
-  - User arrives on the website.
-  - A Metamask window pops up, asking for a connection.
-  - User is prompted to select which network they want to migrate from. If the current Metamask network is different from the 'From' network, Metamask offers to change the Network in one click.
-  - User selects a chain they want to go to. 
-  - A migration window pops up. It has a dropdown selector for assets, and an execution button.
-  - User selects the asset they want to migrate, clicks on the execution button.
-  - A series of smart-contract interaction is triggered. Importantly, a user doesn't need to care about what happens under the hood. They just move money around the chains with few clicks and keystrokes.
-  - Once migration is complete, the user is asked whether they want to switch Metamask to the network they just migrated to.
-  - If the user agrees to change to a new network, a list of dApps living on that network is shown, so the user can continue their journey. Otherwise, they're returned to home screen (where 'From' chain is selected).
+## Description
+
+Crypto Briefing is a media company that focuses on delivering quality coverage of the latest news in the blockchain space. We also have a research-focused branch SIMETRI, which has a subscription service.
+
+This app is a mockup demo of an authentication service that will enable SIMETRI subscribers access website material by using their web3 wallets. 
+
+The target chain is Polygon. Rationale: low fees and an NFT marketplace (OpenSea) for lifetime subscriptions.
+
+## User Flow
+
+- Go to the website;
+- Connect the wallet;
+- The app checks whether the user has a subscription;
+  - If the user doesn't have a subscription, the dapp offers to buy one
+    - Buying can be done either with wBTC, ETH or stablecoins.
+    - If it's not a stablecoin, the price is taken from an oracle.
+  - If the user has a subscription, the website data becomes available;
+    - If the user want to get a refund during trial period, they go to the account page;
+    - The app checks whether the user is still within the trial period;
+    - If the user is still within the trial period, the button for withdrawal will be active.
+
+## Owner flow
+
+- The smart-contract acts as a multisig;
+- 2/3 of the owners should sign a message before it can be sent;
