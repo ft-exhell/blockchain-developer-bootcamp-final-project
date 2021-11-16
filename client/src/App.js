@@ -8,6 +8,7 @@ import "./App.css";
 
 const App = () => {
   const [web3, setWeb3] = useState(undefined)
+  const [instance, setInstance] = useState(undefined)
   const [accounts, setAccounts] = useState([])
 
   useEffect(() => {
@@ -20,16 +21,17 @@ const App = () => {
         const accounts = await web3.eth.getAccounts();
 
         // Get the contract instance.
-        // const networkId = await web3.eth.net.getId();
-        // const deployedNetwork = SimpleStorageContract.networks[networkId];
-        // const instance = new web3.eth.Contract(
-        //   SimpleStorageContract.abi,
-        //   deployedNetwork && deployedNetwork.address,
-        // );
+        const networkId = await web3.eth.net.getId();
+        const deployedNetwork = CBAuth.networks[networkId];
+        const instance = new web3.eth.Contract(
+          CBAuth.abi,
+          deployedNetwork && deployedNetwork.address,
+        );
 
         // Set web3, accounts, and contract to the state.
         setWeb3(web3)
         setAccounts(accounts)
+        setInstance(instance)
       } catch (error) {
         // Catch any errors for any of the above operations.
         alert(
@@ -42,22 +44,6 @@ const App = () => {
     init();
   }, [])
 
-  // runExample = async () => {
-  //   const { accounts, contract } = this.state;
-
-  //   // Stores a given value, 5 by default.
-  //   await contract.methods.set(5).send({ from: accounts[0] });
-
-  //   // Get the value from the contract to prove it worked.
-  //   const response = await contract.methods.get().call();
-
-  //   // Update state with the result.
-  //   this.setState({ storageValue: response });
-  // };
-
-    // if (!this.state.web3) {
-    //   return <div>Loading Web3, accounts, and contract...</div>;
-    // }
     return (
       <div className="App">
         <Navbar web3={web3} accounts={accounts}/>
