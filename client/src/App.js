@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import CBAuth from './contracts/CBAuth.json'
 import getWeb3 from "./getWeb3";
-import Navbar from './components/Navigation'
-import Body from './components/Body'
-import Footer from './components/Footer'
+import Navbar from './components/Navbar'
 
 import "./App.css";
 
@@ -60,9 +58,7 @@ class App extends Component {
     // }
     return (
       <div className="App">
-       <Navbar/>
-       <Body/>
-       <Footer/>
+        <Navbar />
       </div>
     );
   }
