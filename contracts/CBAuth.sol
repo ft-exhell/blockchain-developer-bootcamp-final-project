@@ -1,53 +1,11 @@
-//SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: GPL-3.0
 
 pragma solidity ^0.5.0;
-contract CBAuth {
 
-    uint public yearlyPrice;
-    uint public lifetimePrice;
+import "@openzeppelin/contracts/access/Ownable.sol";
+/// @title Crypto Briefing User Authentication
+/// @author Anton Tarasov
+/// @notice This is a final project for the ConsenSys Bootcamp
+contract CBAuth is Ownable {
 
-    mapping (address => bool) public owners;
-    uint requiredSignatures;
-
-    mapping (address => uint) public subscriptions;
-
-    constructor() public {
-
-    }
-
-    modifier onlyOwners() {
-        _;
-    }
-    
-    event SubscribedForYearly(address);
-    
-    function subscribed(address subscriber) public view returns (bool){
-        if (subscriptions[subscriber] == 0) {
-            return false;
-        }
-        return subscriptions[subscriber] < block.timestamp;
-    }
-
-    function buyYearly(address subscriber) public payable {
-        require(msg.value == yearlyPrice, 'Wrong amount specified.');
-        require(!subscribed(subscriber), 'You are already subscribed.');
-        subscriptions[subscriber] = block.timestamp;
-        emit SubscribedForYearly(subscriber);
-    }
-
-    function buyLifetime() public payable {
-
-    }
-
-    function updateYearlyPrice(uint _price) public onlyOwners {
-        yearlyPrice = _price;
-    }
-
-    function updateLifetimePrice(uint _price) public onlyOwners{
-        lifetimePrice = _price;
-    }
-
-    function Refund() public {
-        
-    }
 }

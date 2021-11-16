@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CBAuth from './contracts/CBAuth.json'
 import getWeb3 from "./getWeb3";
 import Navbar from './components/Navbar'
@@ -8,38 +7,40 @@ import Promo from './components/Promo'
 import "./App.css";
 
 const App = () => {
-  const [subscribed, setSubscribed] = useState(false)
-  // state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  const [web3, setWeb3] = useState(undefined)
+  const [accounts, setAccounts] = useState([])
 
-  // componentDidMount = async () => {
-  //   try {
-  //     // Get network provider and web3 instance.
-  //     const web3 = await getWeb3();
+  useEffect(() => {
+    const init = async () => {
+      try {
+        // Get network provider and web3 instance.
+        const web3 = await getWeb3();
 
-  //     // Use web3 to get the user's accounts.
-  //     const accounts = await web3.eth.getAccounts();
+        // Use web3 to get the user's accounts.
+        const accounts = await web3.eth.getAccounts();
 
-  //     // Get the contract instance.
-  //     const networkId = await web3.eth.net.getId();
-  //     const deployedNetwork = SimpleStorageContract.networks[networkId];
-  //     const instance = new web3.eth.Contract(
-  //       SimpleStorageContract.abi,
-  //       deployedNetwork && deployedNetwork.address,
-  //     );
+        // Get the contract instance.
+        // const networkId = await web3.eth.net.getId();
+        // const deployedNetwork = SimpleStorageContract.networks[networkId];
+        // const instance = new web3.eth.Contract(
+        //   SimpleStorageContract.abi,
+        //   deployedNetwork && deployedNetwork.address,
+        // );
 
-  //     console.log(accounts)
-
-  //     // Set web3, accounts, and contract to the state, and then proceed with an
-  //     // example of interacting with the contract's methods.
-  //     this.setState({ web3, accounts, contract: instance }, this.runExample);
-  //   } catch (error) {
-  //     // Catch any errors for any of the above operations.
-  //     alert(
-  //       `Failed to load web3, accounts, or contract. Check console for details.`,
-  //     );
-  //     console.error(error);
-  //   }
-  // };
+        // Set web3, accounts, and contract to the state.
+        setWeb3(web3)
+        setAccounts(accounts)
+      } catch (error) {
+        // Catch any errors for any of the above operations.
+        alert(
+          `Failed to load web3, accounts, or contract. Check console for details.`,
+        );
+        console.error(error);
+      }
+    };
+  
+    init();
+  }, [])
 
   // runExample = async () => {
   //   const { accounts, contract } = this.state;
@@ -59,7 +60,7 @@ const App = () => {
     // }
     return (
       <div className="App">
-        <Navbar subscribed={subscribed}/>
+        <Navbar web3={web3} accounts={accounts}/>
         <Promo />
       </div>
     );
