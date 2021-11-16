@@ -1,11 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import CBAuth from './contracts/CBAuth.json'
 import getWeb3 from "./getWeb3";
 import Navbar from './components/Navbar'
+import Promo from './components/Promo'
 
 import "./App.css";
 
-class App extends Component {
+const App = () => {
+  const [subscribed, setSubscribed] = useState(false)
   // state = { storageValue: 0, web3: null, accounts: null, contract: null };
 
   // componentDidMount = async () => {
@@ -51,17 +54,15 @@ class App extends Component {
   //   this.setState({ storageValue: response });
   // };
 
-
-  render() {
     // if (!this.state.web3) {
     //   return <div>Loading Web3, accounts, and contract...</div>;
     // }
     return (
       <div className="App">
-        <Navbar />
+        <Navbar subscribed={subscribed}/>
+        <Promo />
       </div>
     );
-  }
 }
 
 export default App;
