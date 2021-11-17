@@ -1,4 +1,4 @@
-export default function Promo() {
+export default function Promo(props) {
     return(
         <div className='text-center py-20'>
             <h1 className='font-bold text-6xl'>Crypto Briefing’s proven system for earning consistent gains</h1>
@@ -15,7 +15,7 @@ export default function Promo() {
                 </div>
             </div>
             <div className='pt-10'>
-                <a href='#' className=' bg-black text-white py-3 px-3 rounded-full'>Get Started Now</a>
+                <button onClick={props.handleSubscription} className=' bg-black text-white py-3 px-3 rounded-full'>Get Started For 0.5 ETH/Year</button>
             </div>
         </div>
     )

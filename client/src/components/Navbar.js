@@ -1,5 +1,3 @@
-// import NavNonSub from "./NavNonSub"
-
 export default function Navbar(props) {
     return(
         <nav className='sticky top-0 bg-white shadow-md'>
@@ -16,7 +14,6 @@ export default function Navbar(props) {
                     </div>
                     {/* nav */}
                     <div className='flex space-x-4'> 
-                        <span className='px-3'>Subscription: Not Subscribed</span>
                         <button className='px-3'>{
                             props.accounts.length > 0 ? `${props.accounts[0].slice(0, 5)}...${props.accounts[0].slice(-5, -1)}` : "Connect Wallet"}
                         </button>
