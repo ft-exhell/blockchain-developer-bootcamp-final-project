@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/ft-exhell/blockchain-developer-bootcamp-final-project#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.3.3"
+    "@chainlink/contracts": "^0.2.2",
+    "@openzeppelin/contracts": "^4.3.3",
+    "ganache-cli": "^6.12.2"
   }
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Usdc from './contracts/Usdc.json'
 import CBAuth from './contracts/CBAuth.json'
 import getWeb3 from "./getWeb3";
 import Navbar from './components/Navbar'
@@ -10,8 +11,11 @@ import "./App.css";
 const App = () => {
   const [web3, setWeb3] = useState(undefined)
   const [instance, setInstance] = useState(undefined)
+  const [usdcInstance, setUsdcInstance] = useState(undefined)
   const [accounts, setAccounts] = useState([])
   const [subscribed, setSubscribed] = useState(false)
+  const [usdcForSubscription, setUsdcForSubscription] = useState(0)
+  const [ethForSubscription, setEthForSubscription] = useState(0)
 
   useEffect(() => {
     const init = async () => {
@@ -33,11 +37,24 @@ const App = () => {
         // Check the subscription
         const subscribed = await instance.methods.isSubscribed().call({ from: accounts[0]})
 
+        console.log(await instance.methods.subscriptions(accounts[0]).call())
+
+        // Get subscription prices
+        const usdcForSubscription = await instance.methods.subscriptionPrice().call();
+        const ethUsdPrice = await instance.methods.getETHUSDPrice().call();
+        const ethForSubscription =  usdcForSubscription / ethUsdPrice;
+
+        const usdcInstance = await new web3.eth.Contract(Usdc, '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48')
+        // console.log(await usdcInstance.methods.balanceOf(instance.options.address).call())
+
         // Set web3, accounts, and contract to the state.
         setWeb3(web3)
         setAccounts(accounts)
         setInstance(instance)
+        setUsdcInstance(usdcInstance)
         setSubscribed(subscribed)
+        setUsdcForSubscription(usdcForSubscription)
+        setEthForSubscription(ethForSubscription)
       } catch (error) {
         // Catch any errors for any of the above operations.
         alert(
@@ -50,10 +67,26 @@ const App = () => {
     init();
   }, [])
 
-  const handleSubscription = async () => {
-    const subscribed = await instance.methods.subscribe().send({ from: accounts[0], value: 500000000000000000})
+  const handleETHSubscription = async () => {
+    try {
+      await instance.methods.subscribeETH().send({ from: accounts[0], value: web3.utils.toWei(ethForSubscription.toString(), 'ether')})
 
-    setSubscribed(subscribed)
+      const subscribed = await instance.methods.isSubscribed().call({from: accounts[0]})
+      setSubscribed(subscribed)
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+  const handleUSDCSubscription = async () => {
+    try {
+      await instance.methods.subscribeUSDC().send({ from: accounts[0]})
+
+      const subscribed = await instance.methods.isSubscribed().call({from: accounts[0]})
+      setSubscribed(subscribed)
+    } catch (err) {
+      console.log(err.message)
+    }
   }
 
   const handleRefund = async () => {
@@ -65,7 +98,7 @@ const App = () => {
   return (
     <div className="App">
       <Navbar web3={web3} accounts={accounts} subscribed={subscribed} />
-      {subscribed ? <MainPage handleRefund={handleRefund}/> : <Promo handleSubscription={handleSubscription}/>}
+      {subscribed ? <MainPage handleRefund={handleRefund}/> : <Promo instance={instance} usdcInstance={usdcInstance} accounts={accounts} handleETHSubscription={handleETHSubscription} handleUSDCSubscription={handleUSDCSubscription} usdcForSubscription={usdcForSubscription} ethForSubscription={ethForSubscription} />}
     </div>
   );
 }
