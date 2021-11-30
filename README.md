@@ -5,9 +5,10 @@
 
 **Network:** Rinkeby
 
-**Notice:** I struggled to find a good DAI representation on testnets, which I could effortlessly obtain from a faucet. 
+**Notes:** 
 
-Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. You can easily get it by borrowing on Compound or buying on Uniswap. The contract address is: `0xDBF305B0B88FeFDd842E5C160477403A03136e7b`.
+- I struggled to find a good DAI representation on testnets, which I could effortlessly obtain from a faucet. Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. You can easily get it by borrowing on Compound or buying on Uniswap. The contract address is: `0xDBF305B0B88FeFDd842E5C160477403A03136e7b`.
+- The app connects to accounts when you change them in Metamask, but you have to reload the page. 
 
 ## Directory Structure
     .
