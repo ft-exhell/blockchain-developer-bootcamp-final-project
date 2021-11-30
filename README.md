@@ -27,7 +27,6 @@ Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. 
 ### Contracts
 - Run `git clone https://github.com/ft-exhell/blockchain-developer-bootcamp-final-project.git && cd blockchain-developer-bootcamp-final-project`
 - Run `npm install` in the project's root
-- Run `echo "INFURA_API_KEY=<your Infura account's API key>" > .env`
 - Open the project's root in the new terminal window
 - Run `sh ganache-mainnet-fork.sh`, this will launch Ethereum mainnet fork on Ganache
     - If you want to play around with the local frontend, copy the mnemonic phrase for later use in Metamask, otherwise it will be buried under Ganache updates
