@@ -20,6 +20,9 @@ const App = () => {
   const [ethForSubscription, setEthForSubscription] = useState(0)
   const [ethForSubscriptionOriginal, setEthForSubscriptionOrigial] = useState(0)
   const [allowanceCheck, setAllowanceCheck] = useState(undefined)
+  
+  const DAI_MAINNET = '0x6b175474e89094c44da98b954eedeac495271d0f';
+  const USDT_RINKEBY = '0xD9BA894E0097f8cC2BBc9D24D308b98e36dc6D02';
 
   useEffect(() => {
     const init = async () => {
@@ -32,11 +35,20 @@ const App = () => {
 
         // Get the contract instance.
         const networkId = await web3.eth.net.getId();
-        const deployedNetwork = CBAuth.networks[networkId];
-        const instance = new web3.eth.Contract(
-          CBAuth.abi,
-          deployedNetwork && deployedNetwork.address,
-        );
+        let instance;
+        if (networkId == 999)  {
+          const deployedNetwork = CBAuth.networks[networkId];
+          instance = new web3.eth.Contract(
+            CBAuth.abi,
+            deployedNetwork && deployedNetwork.address
+          );
+        } else if (networkId == 4) {
+          const rinkebyAddress = '0xDBF305B0B88FeFDd842E5C160477403A03136e7b';
+          instance = new web3.eth.Contract(
+            CBAuth.abi,
+            rinkebyAddress
+          );
+        }
         
         // Check the subscription
         const subscribed = await instance.methods.isSubscribed(accounts[0]).call()
@@ -48,7 +60,15 @@ const App = () => {
         const ethForSubscriptionOriginal = await instance.methods.calculateETHPrice().call();
 
         // Connect to DAI instance and get allowance.
-        const daiInstance = await new web3.eth.Contract(IERC20.abi, '0xD9BA894E0097f8cC2BBc9D24D308b98e36dc6D02')
+        // if (networkId) 
+        let stablecoinAddress;
+        if (networkId == 999) {
+          stablecoinAddress = DAI_MAINNET;
+        } else if (networkId == 4) {
+          stablecoinAddress = USDT_RINKEBY;
+        }
+        const daiInstance = await new web3.eth.Contract(IERC20.abi, stablecoinAddress)
+        console.log(daiInstance)
         const daiAllowance =  await daiInstance.methods.allowance(accounts[0], instance.options.address).call()
         
         const allowanceCheck = new BigNumber(daiAllowance).isGreaterThanOrEqualTo(new BigNumber(daiForSubscription).multipliedBy(new BigNumber(1e+18)))
@@ -69,7 +89,7 @@ const App = () => {
         alert(
           `Failed to load web3, accounts, or contract. Check console for details.`,
         );
-        console.error(error);
+        console.error(error.message);
       }
     };
   

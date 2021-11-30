@@ -33,10 +33,11 @@ Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. 
     - If you want to play around with the local frontend, copy the mnemonic phrase for later use in Metamask, otherwise it will be buried under Ganache updates
 - Go back to the previous terminal window
 - Run `truffle console --network mainnet_fork`, this will give you access to Ganache
+- Run `migrate --reset`, this for you to be able to run the app on Ganache
 - Run `test` 
 
 ### Frontend
-- Run `cd client && npm install && npm start`
+- In a fresh terminal window run `cd client && npm install && npm start`
 - If the url wasn't opened automatically, go to `http://localhost:3000/`
 - In you Metamask paste in the mnemonic phrase you copied when you launched Ganache
 - If you wanna test payments via DAI, you will
