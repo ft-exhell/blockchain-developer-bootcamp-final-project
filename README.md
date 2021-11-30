@@ -23,9 +23,9 @@ Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. 
 - NPM >= 7.20.3
 - Truffle and Ganache CLI (make sure you have `ganache-cli`)
 - Infura account
-- `git checkout master`
 
 ### Contracts
+- Run `git clone https://github.com/ft-exhell/blockchain-developer-bootcamp-final-project.git && cd blockchain-developer-bootcamp-final-project`
 - Run `npm install` in the project's root
 - Run `echo "<your Infura account's API key>" > .env`
 - Open the project's root in the new terminal window
