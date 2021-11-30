@@ -21214,14 +21214,60 @@
   },
   "networks": {
     "999": {
-      "events": {},
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0x167242d43394c1ae34826c8d7544822cbe8c1071d221a571aad57cdd2c2a2fd3": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "subscriber",
+              "type": "address"
+            }
+          ],
+          "name": "Refunded",
+          "type": "event"
+        },
+        "0xa88fac53823b534c72d6958345adbe6801e072750d83b490d52ebbac51473a63": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "subscriber",
+              "type": "address"
+            }
+          ],
+          "name": "Subscribed",
+          "type": "event"
+        }
+      },
       "links": {},
-      "address": "0xE206662Fba137a16620a2C1348813094fe6D90c5",
-      "transactionHash": "0x8979ce39c87b185481ddef2d2d81001c1a54381488a48910b0f84f9bc5d63002"
+      "address": "0x67E8B81A96CAd8D5fAbE6dAF4EEc811abF28f3B9",
+      "transactionHash": "0xea685036aebc6ba5a0497a9ca5d62716d9647b70ff35a134ed3079578c158279"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-30T19:49:57.111Z",
+  "updatedAt": "2021-11-30T20:02:13.665Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Anton Tarasov",

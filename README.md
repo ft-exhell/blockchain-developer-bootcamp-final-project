@@ -43,6 +43,7 @@ Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. 
 - If you wanna test payments via DAI, you will
 
 ## Screencast link
+https://www.youtube.com/watch?v=OuC3epjlk0g&t=4s
 
 ## Ethereum address for certification
 
