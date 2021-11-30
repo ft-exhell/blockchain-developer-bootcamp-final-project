@@ -29,6 +29,7 @@ Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. 
 - Run `npm install` in the project's root
 - Open the project's root in the new terminal window
 - Run `sh ganache-mainnet-fork.sh`, this will launch Ethereum mainnet fork on Ganache
+    - Ganache will run on the port `8545`
     - If you want to play around with the local frontend, copy the mnemonic phrase for later use in Metamask, otherwise it will be buried under Ganache updates
 - Go back to the previous terminal window
 - Run `truffle console --network mainnet_fork`, this will give you access to Ganache
