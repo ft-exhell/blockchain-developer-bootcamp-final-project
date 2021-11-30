@@ -7,7 +7,7 @@
 
 **Notice:** I struggled to find a good DAI representation on testnets, which I could effortlessly obtain from a faucet. 
 
-Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. Hit me up if you need some of it for testing, I have a ton.
+Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. You can easily get it by borrowing on Compound or buying on Uniswap. The contract address is: `0xDBF305B0B88FeFDd842E5C160477403A03136e7b`.
 
 ## Directory Structure
     .
@@ -40,7 +40,7 @@ Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. 
 - In a fresh terminal window open the project's root and run `cd client && npm install && npm start`
 - If the url wasn't opened automatically, go to `http://localhost:3000/`
 - In you Metamask paste in the mnemonic phrase you copied when you launched Ganache
-- If you wanna test payments via DAI, you will
+- If you wanna test payments via DAI, you will need to use your 2nd account in Metamask
 
 ## Screencast link
 https://www.youtube.com/watch?v=OuC3epjlk0g&t=4s

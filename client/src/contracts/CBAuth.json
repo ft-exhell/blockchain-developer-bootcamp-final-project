@@ -21262,12 +21262,12 @@
         }
       },
       "links": {},
-      "address": "0x67E8B81A96CAd8D5fAbE6dAF4EEc811abF28f3B9",
-      "transactionHash": "0xea685036aebc6ba5a0497a9ca5d62716d9647b70ff35a134ed3079578c158279"
+      "address": "0xc92C9a54a215F35714cB7cC9809D0E4e1D7bb751",
+      "transactionHash": "0x69933d670bc7477829b460518bfe466d3afffb632d45d969e8aeb0646309375c"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-30T20:02:13.665Z",
+  "updatedAt": "2021-11-30T20:57:10.962Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Anton Tarasov",
