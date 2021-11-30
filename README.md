@@ -37,7 +37,7 @@ Hence, while the original idea was to use DAI, I used Compound USDT on Rinkeby. 
 - Run `test` 
 
 ### Frontend
-- In a fresh terminal window run `cd client && npm install && npm start`
+- In a fresh terminal window open the project's root and run `cd client && npm install && npm start`
 - If the url wasn't opened automatically, go to `http://localhost:3000/`
 - In you Metamask paste in the mnemonic phrase you copied when you launched Ganache
 - If you wanna test payments via DAI, you will
