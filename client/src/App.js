@@ -68,7 +68,6 @@ const App = () => {
           stablecoinAddress = USDT_RINKEBY;
         }
         const daiInstance = await new web3.eth.Contract(IERC20.abi, stablecoinAddress)
-        console.log(daiInstance)
         const daiAllowance =  await daiInstance.methods.allowance(accounts[0], instance.options.address).call()
         
         const allowanceCheck = new BigNumber(daiAllowance).isGreaterThanOrEqualTo(new BigNumber(daiForSubscription).multipliedBy(new BigNumber(1e+18)))
